@@ -2,5 +2,60 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: "Inconsolata", sans-serif;
+}
+
+body {
+  background: url("./assets/background-desktop.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+@media (min-width: 461px) and (max-width: 760px) {
+  body {
+    background: url('./assets/background-tablet.png');
+  }
+}
+
+@media (max-width: 460px) {
+  body {
+    background: url('./assets/background-mobile.png');
+  }
+}
+
+.web-title {
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-top: 1rem;
+}
+
+.web-title > span {
+  padding-left: 0.5rem;
+  font-weight: bold;
+  word-spacing: 3px;
+}
+
+.web-title > img {
+  width: 2rem;
+}
+
+header > p {
+  color: #fff;
+  text-align: center;
+}
+
+header .main-text {
+  font-size: 2.8rem;
+  font-weight: bold;
+  width: 45rem;
+  margin: 1.5rem auto 0 auto ;
+  word-spacing: 8px;
+}
+
+.secondary-text {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #bdb3b3;
 }
