@@ -116,3 +116,49 @@ button {
 button:hover {
   background-color: #555;
 }
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #666;
+  border-radius: 1rem;
+  background: url('./assets/background-desktop.png');
+}
+
+.upload-container label {
+  cursor: pointer;
+  transition: all .3s;
+  margin-top: 0.5rem;
+}
+
+.upload-container label:hover {
+  transform: translateY(3px);
+}
+
+.upload-container  input {
+  display: none;
+}
+
+.upload-container p {
+  margin: .5rem;
+  color: #666;
+}
+
+.upload-container > h2 {
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.upload-message {
+  color: #666;
+  font-size: .8rem;
+  margin-right: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.upload-message img {
+  padding-right: 0.2rem;
+}

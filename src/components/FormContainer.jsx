@@ -1,5 +1,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import uploadIcon from "../assets/icon-upload.svg"
+import infoIcon from "../assets/icon-info.svg"
 
 const FormContainer = () => {
   const formik = useFormik({
@@ -36,20 +38,31 @@ const FormContainer = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div className="input-containers">
-        <label htmlFor="file">Upload File</label>
-        <input
-          id="file"
-          name="file"
-          type="file"
-          onChange={(event) => {
-            formik.setFieldValue("file", event.currentTarget.files[0]);
-          }}
-        />
+      <div className="input-containers upload-container">
+        <h2>Upload Avatar</h2>
+        <label htmlFor="file">
+          <img src={uploadIcon} alt="" />
+        </label>
+        <span>
+          <input
+            id="file"
+            name="file"
+            type="file"
+            onChange={(event) => {
+              formik.setFieldValue("file", event.currentTarget.files[0]);
+            }}
+          />
+        </span>
+        <p>Drag and drop or click to upload</p>
         {formik.errors.file && formik.touched.file && (
           <div>{formik.errors.file}</div>
         )}
       </div>
+
+      <p className="upload-message">
+        <img src={infoIcon} alt="" />
+        Upload your photo (JPG or PNG, max size: 2MG)
+      </p>
 
       <div className="input-containers">
         <label htmlFor="name">Full Name</label>
