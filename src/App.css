@@ -8,18 +8,18 @@
 body {
   background: url("./assets/background-desktop.png");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
 }
 
 @media (min-width: 461px) and (max-width: 760px) {
   body {
-    background: url('./assets/background-tablet.png');
+    background: url("./assets/background-tablet.png");
   }
 }
 
 @media (max-width: 460px) {
   body {
-    background: url('./assets/background-mobile.png');
+    background: url("./assets/background-mobile.png");
   }
 }
 
@@ -50,7 +50,7 @@ header .main-text {
   font-size: 2.8rem;
   font-weight: bold;
   width: 45rem;
-  margin: 1.5rem auto 0 auto ;
+  margin: 1.5rem auto 0 auto;
   word-spacing: 8px;
 }
 
@@ -58,4 +58,61 @@ header .main-text {
   margin-top: 1.5rem;
   font-size: 1.1rem;
   color: #bdb3b3;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 1rem;
+}
+
+.input-containers {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 400px;
+  margin: .5rem 0;
+  padding: .5rem;
+  backdrop-filter: blur(20px); /* Blur applied to background */
+}
+
+.input-containers label {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.input-containers input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border:1px solid #666;
+  border-radius: 10px;
+  /* background: rgba(255, 255, 255, 0.8); Prevent input from being blurred */
+  background: url('./assets/background-desktop.png');
+  color: #666;
+}
+
+.input-containers input[type="file"] {
+  border: 2px dashed #666;
+}
+
+.input-containers input:focus {
+  outline: none;
+  border-color: #666;
+}
+
+button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #555;
 }

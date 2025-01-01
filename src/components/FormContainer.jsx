@@ -36,7 +36,7 @@ const FormContainer = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div>
+      <div className="input-containers">
         <label htmlFor="file">Upload File</label>
         <input
           id="file"
@@ -51,7 +51,7 @@ const FormContainer = () => {
         )}
       </div>
 
-      <div>
+      <div className="input-containers">
         <label htmlFor="name">Full Name</label>
         <input
           id="name"
@@ -66,7 +66,7 @@ const FormContainer = () => {
         )}
       </div>
 
-      <div>
+      <div className="input-containers">
         <label htmlFor="email">Email Address</label>
         <input
           id="email"
@@ -81,7 +81,7 @@ const FormContainer = () => {
         )}
       </div>
 
-      <div>
+      <div className="input-containers">
         <label htmlFor="githubUsername">GitHub Username</label>
         <input
           id="githubUsername"
