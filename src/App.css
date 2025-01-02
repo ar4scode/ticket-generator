@@ -87,9 +87,14 @@ form {
   font-size: 1rem;
   border:1px solid #666;
   border-radius: 10px;
+  cursor: pointer;
   /* background: rgba(255, 255, 255, 0.8); Prevent input from being blurred */
   background: url('./assets/background-desktop.png');
   color: #666;
+}
+
+.input-containers input:hover {
+  background-color: #6c5672;
 }
 
 .input-containers input[type="file"] {

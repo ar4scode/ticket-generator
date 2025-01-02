@@ -156,7 +156,7 @@ const FormContainer = () => {
         {/* No validation is applied to GitHub username */}
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit">Generate Ticket</button>
     </form>
   );
 };
