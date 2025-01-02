@@ -1,15 +1,34 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import uploadIcon from "../assets/icon-upload.svg"
-import infoIcon from "../assets/icon-info.svg"
+import uploadIcon from "../assets/icon-upload.svg";
+import infoIcon from "../assets/icon-info.svg";
+import { useState } from "react";
 
 const FormContainer = () => {
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
+
+  const handleChange = (event) => {
+    const imageFile = event.target.files[0];
+    if (imageFile) {
+      setImage(imageFile);
+      setPreview(URL.createObjectURL(imageFile));
+      formik.setFieldValue("file", imageFile); // Set file value in Formik
+    }
+  };
+
+  const handleRemove = () => {
+    setImage(null);
+    setPreview(null);
+    formik.setFieldValue("file", null); // Clear file value in Formik
+  };
+
   const formik = useFormik({
     initialValues: {
       file: null,
       name: "",
       email: "",
-      githubUsername: "", // If this isn't required, you can leave it as an empty string.
+      githubUsername: "",
     },
     validationSchema: Yup.object({
       file: Yup.mixed()
@@ -39,30 +58,54 @@ const FormContainer = () => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="input-containers upload-container">
-        <h2>Upload Avatar</h2>
-        <label htmlFor="file">
-          <img src={uploadIcon} alt="" />
-        </label>
-        <span>
-          <input
-            id="file"
-            name="file"
-            type="file"
-            onChange={(event) => {
-              formik.setFieldValue("file", event.currentTarget.files[0]);
-            }}
-          />
-        </span>
-        <p>Drag and drop or click to upload</p>
-        {formik.errors.file && formik.touched.file && (
-          <div>{formik.errors.file}</div>
+        {preview ? (
+          <>
+            <img className="uploaded-image" src={preview} alt="Uploaded preview" />
+            <div className="btn-container">
+              <button type="button" onClick={handleRemove}>
+                Remove Image
+              </button>
+              <label htmlFor="file">Change Image</label>
+              <input
+                type="file"
+                name="file"
+                id="file"
+                onChange={handleChange}
+                accept="image/*"
+                style={{ display: "none" }}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <h2>Upload Avatar</h2>
+            <label htmlFor="file">
+              <img src={uploadIcon} alt="Upload icon" />
+            </label>
+            <input
+              id="file"
+              name="file"
+              type="file"
+              onChange={handleChange}
+              accept="image/*"
+              style={{ display: "none" }}
+            />
+            <p>Drag and drop or click to upload</p>
+          </>
         )}
       </div>
 
-      <p className="upload-message">
-        <img src={infoIcon} alt="" />
-        Upload your photo (JPG or PNG, max size: 2MG)
-      </p>
+      {formik.errors.file && formik.touched.file ? (
+        <p className="upload-message" style={{ color: "#e76868" }}>
+          <img src={infoIcon} alt="Info icon" />
+          Upload your photo (JPG or PNG, max size: 2MB)
+        </p>
+      ) : (
+        <p className="upload-message">
+          <img src={infoIcon} alt="Info icon" />
+          Upload your photo (JPG or PNG, max size: 2MB)
+        </p>
+      )}
 
       <div className="input-containers">
         <label htmlFor="name">Full Name</label>
@@ -75,7 +118,7 @@ const FormContainer = () => {
           value={formik.values.name}
         />
         {formik.errors.name && formik.touched.name && (
-          <div>{formik.errors.name}</div>
+          <div style={{ color: "red" }}>{formik.errors.name}</div>
         )}
       </div>
 
@@ -90,7 +133,7 @@ const FormContainer = () => {
           value={formik.values.email}
         />
         {formik.errors.email && formik.touched.email && (
-          <div>{formik.errors.email}</div>
+          <div style={{ color: "red" }}>{formik.errors.email}</div>
         )}
       </div>
 
@@ -104,7 +147,7 @@ const FormContainer = () => {
           onBlur={formik.handleBlur}
           value={formik.values.githubUsername}
         />
-        {/* No validation is applied to GitHub username in this example */}
+        {/* No validation is applied to GitHub username */}
       </div>
 
       <button type="submit">Submit</button>

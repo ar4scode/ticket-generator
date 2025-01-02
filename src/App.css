@@ -103,7 +103,7 @@ form {
 }
 
 button {
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 1rem;
   font-size: 1rem;
   color: #fff;
   background-color: #333;
@@ -161,4 +161,26 @@ button:hover {
 
 .upload-message img {
   padding-right: 0.2rem;
+}
+
+.uploaded-image {
+  width: 4rem;
+  border: 1px solid #fff;
+  border-radius: 1rem;
+}
+
+.btn-container button, .btn-container label {
+  background-color: #5d5164;
+  transition: all .4s;
+}
+
+.btn-container button:hover,
+.btn-container label:hover {
+  text-decoration: underline;
+}
+
+.btn-container label {
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  margin-left: 0.3rem;
 }
