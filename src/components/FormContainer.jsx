@@ -118,8 +118,11 @@ const FormContainer = () => {
           value={formik.values.name}
         />
         {formik.errors.name && formik.touched.name && (
-          <div style={{ color: "red" }}>{formik.errors.name}</div>
-        )}
+        <p className="upload-message" style={{ color: "#e76868" }}>
+          <img src={infoIcon} alt="Info icon" />
+          Please enter a valid email address
+        </p>
+      )}
       </div>
 
       <div className="input-containers">
@@ -132,9 +135,12 @@ const FormContainer = () => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
         />
-        {formik.errors.email && formik.touched.email && (
-          <div style={{ color: "red" }}>{formik.errors.email}</div>
-        )}
+        {formik.errors.email && formik.touched.email&& (
+        <p className="upload-message" style={{ color: "#e76868" }}>
+          <img src={infoIcon} alt="Info icon" />
+          Please enter a valid email address
+        </p>
+      )}
       </div>
 
       <div className="input-containers">
